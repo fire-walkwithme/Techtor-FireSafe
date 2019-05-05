@@ -11,7 +11,7 @@
 
     <uses-feature
         android:glEsVersion="0x00020000"
-        android:required="true"/>
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -32,7 +32,7 @@
             android:value="@string/indooratlas_api_secret" />
 
         <activity
-            android:name="com.rux.firesafe.ListExamplesActivity"
+            android:name=".ListExamplesActivity"
             android:label="FireSafe">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,9 +40,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.rux.firesafe.imageview.ImageViewActivity"
+            android:name=".imageview.ImageViewActivity"
             android:label="@string/example_imageview_title"
             android:screenOrientation="portrait" />
 
@@ -55,6 +54,13 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/filepaths" />
         </provider>
+
+        <service
+            android:name=".notifications.TokenWatcher">
+        <intent-filter>
+            <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+        </intent-filter>
+        </service>
 
     </application>
 
