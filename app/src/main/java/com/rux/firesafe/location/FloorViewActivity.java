@@ -1,4 +1,4 @@
-package com.rux.firesafe.imageview;
+package com.rux.firesafe.location;
 
 import android.Manifest;
 import android.app.DownloadManager;
@@ -16,7 +16,6 @@ import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -27,7 +26,7 @@ import com.indooratlas.android.sdk.IALocationManager;
 import com.indooratlas.android.sdk.IALocationRequest;
 import com.indooratlas.android.sdk.IARegion;
 import com.rux.firesafe.R;
-import com.rux.firesafe.SdkExample;
+import com.rux.firesafe.utils.SdkExample;
 import com.rux.firesafe.utils.*;
 import com.indooratlas.android.sdk.resources.IAFloorPlan;
 import com.indooratlas.android.sdk.resources.IALatLng;
@@ -36,7 +35,7 @@ import com.indooratlas.android.sdk.resources.IALocationListenerSupport;
 import java.io.File;
 
 @SdkExample(description = R.string.example_imageview_description)
-public class ImageViewActivity extends FragmentActivity {
+public class FloorViewActivity extends FragmentActivity {
 
     private static final String TAG = "IndoorAtlasExample";
 
@@ -71,7 +70,7 @@ public class ImageViewActivity extends FragmentActivity {
             if (region.getType() == IARegion.TYPE_FLOOR_PLAN) {
                 String id = region.getId();
                 Log.d(TAG, "floorPlan changed to " + id);
-                Toast.makeText(ImageViewActivity.this, id, Toast.LENGTH_SHORT).show();
+                Toast.makeText(FloorViewActivity.this, id, Toast.LENGTH_SHORT).show();
                 fetchFloorPlan(region.getFloorPlan());
             }
         }
@@ -96,7 +95,7 @@ public class ImageViewActivity extends FragmentActivity {
         mIALocationManager = IALocationManager.create(this);
 
         // Setup long click listener for sharing traceId
-        ExampleUtils.shareTraceId(findViewById(R.id.imageView), ImageViewActivity.this,
+        ExampleUtils.shareTraceId(findViewById(R.id.imageView), FloorViewActivity.this,
                 mIALocationManager);
 
     }

@@ -1,4 +1,4 @@
-package com.rux.firesafe.imageview;
+package com.rux.firesafe.location;
 
 import com.rux.firesafe.R;
 import android.content.Context;

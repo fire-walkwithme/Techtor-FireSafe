@@ -32,7 +32,7 @@
             android:value="@string/indooratlas_api_secret" />
 
         <activity
-            android:name=".ListExamplesActivity"
+            android:name=".MainActivity"
             android:label="FireSafe">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".imageview.ImageViewActivity"
+            android:name=".location.FloorViewActivity"
             android:label="@string/example_imageview_title"
             android:screenOrientation="portrait" />
 

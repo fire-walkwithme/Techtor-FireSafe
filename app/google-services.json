@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "67318391331",
+    "firebase_url": "https://firesafe-4c3b3.firebaseio.com",
+    "project_id": "firesafe-4c3b3",
+    "storage_bucket": "firesafe-4c3b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67318391331:android:8d8a2ba071aae421",
+        "android_client_info": {
+          "package_name": "com.rux.firesafe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67318391331-ma34l2g2j0qvqmu41qmlioj7hjbip2t1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rux.firesafe",
+            "certificate_hash": "8a3368651cc8b740a6999ecb17c866b274ad932e"
+          }
+        },
+        {
+          "client_id": "67318391331-9kn1htb6u30kjfu114il4b3cufa4rm6t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1xvOdH_h7jZ6G4gXM61tMjFFuECgiyFs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67318391331-9kn1htb6u30kjfu114il4b3cufa4rm6t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

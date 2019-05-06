@@ -1,4 +1,4 @@
-package com.rux.firesafe;
+package com.rux.firesafe.utils;
 
 import android.support.annotation.StringRes;
 

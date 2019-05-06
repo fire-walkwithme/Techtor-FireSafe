@@ -22,6 +22,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rux.firesafe.utils.SdkExample;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -30,12 +32,10 @@ import java.util.Collections;
  * Main entry into IndoorAtlas examples. Displays all example activities as list and opens selected
  * activity. Activities are populated from AndroidManifest metadata.
  */
-public class ListExamplesActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "IAExample";
-
     private static final int REQUEST_CODE_ACCESS_COARSE_LOCATION = 1;
-
     private ExamplesAdapter mAdapter;
 
     @Override
@@ -54,8 +54,6 @@ public class ListExamplesActivity extends AppCompatActivity {
                 startActivity(new Intent(Intent.ACTION_VIEW).setComponent(example));
             }
         });
-
-        //startActivity(new Intent(this, ImageViewActivity.class));
 
         if (!isSdkConfigured()) {
             new AlertDialog.Builder(this)
@@ -94,7 +92,7 @@ public class ListExamplesActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Log.d(TAG, "request permissions");
-                                ActivityCompat.requestPermissions(ListExamplesActivity.this,
+                                ActivityCompat.requestPermissions(MainActivity.this,
                                         new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
                                                 Manifest.permission.ACCESS_FINE_LOCATION},
                                         REQUEST_CODE_ACCESS_COARSE_LOCATION);
@@ -103,7 +101,7 @@ public class ListExamplesActivity extends AppCompatActivity {
                         .setNegativeButton(R.string.permission_button_deny, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(ListExamplesActivity.this,
+                                Toast.makeText(MainActivity.this,
                                         R.string.location_permission_denied_message,
                                         Toast.LENGTH_LONG).show();
                             }

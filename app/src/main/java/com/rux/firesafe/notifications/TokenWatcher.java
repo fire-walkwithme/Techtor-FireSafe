@@ -1,17 +1,14 @@
 package com.rux.firesafe.notifications;
 
 import android.util.Log;
+import java.io.IOException;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.gson.Gson;
-
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -25,8 +22,6 @@ import okhttp3.Response;
 
 public class TokenWatcher extends FirebaseInstanceIdService {
 
-    private static final String TAG = "MyFirebaseInstanceServi";
-    private final Gson gson = new Gson();
     private final OkHttpClient httpClient = new OkHttpClient().newBuilder().build();
     private static final String baseUri = "http://192.168.0.105:8082";
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -35,17 +30,17 @@ public class TokenWatcher extends FirebaseInstanceIdService {
         public void onTokenRefresh() {
             String refreshedToken = FirebaseInstanceId.getInstance().getToken();
             FirebaseMessaging.getInstance().subscribeToTopic("all");
-            Log.d(TAG, "Refreshed token: " + refreshedToken);
             sendRegistrationToServer(refreshedToken);
         }
 
         private void sendRegistrationToServer(String refreshedToken) {
-            Log.d("TOKEN ", refreshedToken.toString());
+            Log.d("TOKEN ", refreshedToken);
+
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("token", refreshedToken);
             } catch (JSONException e) {
-
+                e.printStackTrace();
             }
 
             RequestBody body = RequestBody.create(JSON, jsonObject.toString());
@@ -55,22 +50,17 @@ public class TokenWatcher extends FirebaseInstanceIdService {
                     .post(body)
                     .build();
 
-            Response response = tryHttpRequest(request);
+            tryHttpRequest(request);
 
         }
 
-    private Response tryHttpRequest(Request request) {
+    private void tryHttpRequest(Request request) {
         try {
-            final Response response =
-                    this.httpClient.newCall(request).execute();
-            Log.d("Response", response.body().string());
-            return response;
+            Response response = this.httpClient.newCall(request).execute();
+            Log.d("RESPONSE", response.body().string());
 
         } catch (IOException e) {
             e.printStackTrace();
-            throw new IllegalStateException("Could not retrieve specified error");
         }
     }
 }
-
-
